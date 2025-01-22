@@ -1,6 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Comment = require("../models/Comment")
+const Comment = require("../models/Comment");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -14,7 +14,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      res.render("feed.ejs", { posts: posts, user:req.user});
     } catch (err) {
       console.log(err);
     }
@@ -22,8 +22,16 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      const populatedComments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      const comments = await Comment
+        .find({ post: req.params.id })
+        .populate("user", "userName")
+        .sort({ createdAt: "desc" })
+        .lean();
+      res.render("post.ejs", {
+        post: post,
+        user: req.user,
+        comments: comments
+      });
     } catch (err) {
       console.log(err);
     }
@@ -39,6 +47,7 @@ module.exports = {
         cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
+        userName: req.user.userName,
         user: req.user.id,
       });
       console.log("Post has been added!");
