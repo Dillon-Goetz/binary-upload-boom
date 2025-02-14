@@ -1,0 +1,115 @@
+<!-- Need to validate if user is logged in, and if they have completed this for today's date -->
+
+<h3>Let's Check In</h3>
+<div class="row">
+    <form action="/stories" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title">
+                <label for="title">How was your day? </label>
+                    <div id="feelings-container">
+                        <a href="cry">cry emoji</a>
+                        <a href="frown">frown emoji</a>
+                        <a href="ok">straight face emoji</a>
+                        <a href="smile">happy emoji</a>
+                        <a href="grin">grin emoji</a>
+                    </div>
+            </div>
+        </div>
+
+<!-- Take 3 breaths start -->
+    <section>
+        <!-- logic required to make response for each emoji -->
+        <h4>Let's take 3 centering breaths</h4>
+            <!-- image/gif of breathing -->
+            <!-- <button> continue </button> -->
+        <h4>
+    </section>
+
+<!-- Quote of the Day from API -->
+    <section>
+        <h4>Mindfulness quote of the day</h4>
+        <p></p>
+    </section>
+
+<!-- 3 good things -->
+    <section>
+        <h4>3 good things from today</h4>
+        <ul>
+            <li>
+                <form action="/item1" method="POST">
+                <div class="input-field">
+                    <input type="text" id="item1-input" name="item1-input">
+                    <label for="item1-input">Item 1</label>
+                </div>
+                <button type="submit" class="btn">Submit Item 1</button>
+                </form>
+            </li>
+            
+            <li>
+                <form action="/item2" method="POST">
+                <div class="input-field">
+                    <input type="text" id="item2-input" name="item2-input">
+                    <label for="item2-input">Item 2</label>
+                </div>
+                <button type="submit" class="btn">Submit Item 2</button>
+                </form>
+            </li>
+            
+            <li>
+                <form action="/item3" method="POST">
+                <div class="input-field">
+                    <input type="text" id="item3-input" name="item3-input">
+                    <label for="item3-input">Item 3</label>
+                </div>
+                <button type="submit" class="btn">Submit Item 3</button>
+                </form>
+            </li>
+        </ul>
+    </section>
+
+<!-- Negative Entry -->
+    <section>
+        <h4>Not all days are created equal.</h4>
+        <h5>Want to get something off your chest?</h5>
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="title" name="title" placeholder="Share one thorn of your day">
+                    <label for="title"></label>  
+                </div>
+            </div>
+        </section>
+
+<!-- Journaling Section -->
+    <section>
+         <h4> Want to Journal? </h4>   
+        <div class="row">
+            <div class="input-field">
+                <h5>Tell Us Your Story:</h5>
+                <textarea name="body" id="body"></textarea>
+            </div>
+        </div>
+    </section>
+        <div class="row">
+            <div class="input-field">
+                <select name="status" id="status">
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <h5>Tell Us Your Story:</h5>
+                <textarea name="body" id="body"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dashboard" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
